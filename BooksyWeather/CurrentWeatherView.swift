@@ -53,14 +53,17 @@ struct CurrentWeatherView: View {
     }
 
     @Binding var tab: Tab
+    @Binding var exportedColor: Color
     
-    init(tab: Binding<Tab>) {
+    init(tab: Binding<Tab>, exportedColor: Binding<Color>) {
         _tab = tab
+        _exportedColor = exportedColor
     }
 
     var body: some View {
         ZStack {
             color.opacity(0.1).ignoresSafeArea()
+
             VStack {
                 if let icon = viewModel.icon {
                     icon.resizable()
@@ -222,12 +225,15 @@ struct CurrentWeatherView: View {
             .task {
                 viewModel.getCurrentWeather()
             }
+            .onChange(of: color) { color in
+                exportedColor = color
+            }
         }
     }
 }
 
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentWeatherView(tab: .constant(.currentWeather))
+        CurrentWeatherView(tab: .constant(.currentWeather), exportedColor: .constant(.orange))
     }
 }

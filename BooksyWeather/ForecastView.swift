@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ForecastView: View {
     @Binding var tab: Tab
+    @Binding var exportedColor: Color
 
-    init(tab: Binding<Tab>) {
+    init(tab: Binding<Tab>, exportedColor: Binding<Color>) {
         _tab = tab
+        _exportedColor = exportedColor
     }
     
     var body: some View {
@@ -21,6 +23,6 @@ struct ForecastView: View {
 
 struct ForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        ForecastView(tab: .constant(.forecast))
+        ForecastView(tab: .constant(.forecast), exportedColor: .constant(.orange))
     }
 }

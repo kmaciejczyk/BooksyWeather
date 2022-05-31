@@ -15,18 +15,24 @@ struct SearchView: View {
     @State var country = ""
     
     @Binding var tab: Tab
+    @Binding var exportedColor: Color
 
-    init(tab: Binding<Tab>) {
+    init(tab: Binding<Tab>, exportedColor: Binding<Color>) {
         _tab = tab
+        _exportedColor = exportedColor
     }
 
     var body: some View {
+        ZStack {
+            exportedColor.opacity(0.1).ignoresSafeArea()
+
         VStack(alignment: .leading) {
             VStack {
                 Text("Where would you like to check the weather?")
                     .font(.title)
                     .bold()
                     .multilineTextAlignment(.center)
+                    .padding(.bottom)
                 Group {
                     LabeledTextField(text: $city, label: "City")
                     LabeledTextField(text: $state, label: "State code (US only)")
@@ -84,8 +90,9 @@ struct SearchView: View {
                             tab = .currentWeather
                             viewModel.saveCity(city)
                         }) {
-                            Text("\(city.name) \(city.country)")
+                            Text("\(city.name), \(city.country)")
                         }
+                        .listRowBackground(Color.clear)
                     }
                 }
                 .listStyle(.plain)
@@ -93,13 +100,13 @@ struct SearchView: View {
 
             Spacer()
         }
-
+    }
     }
 }
 
 struct CityChoice_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(tab: .constant(.cityChoice))
+        SearchView(tab: .constant(.cityChoice), exportedColor: .constant(.orange))
     }
 }
 
