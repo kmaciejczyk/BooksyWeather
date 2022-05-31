@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selectedTab = Tab.currentWeather
+
     var body: some View {
-        TabView {
-            CurrentWeatherView()
+        TabView(selection: $selectedTab) {
+            CurrentWeatherView(tab: $selectedTab)
                 .tabItem {
                     Label("Current", systemImage: "sun.max.fill")
                 }
-            ForecastView()
+                .tag(Tab.currentWeather)
+            ForecastView(tab: $selectedTab)
                 .tabItem {
                     Label("Forecast", systemImage: "calendar")
                 }
-            CityChoiceView()
+                .tag(Tab.forecast)
+            SearchView(tab: $selectedTab)
                 .tabItem {
-                    Label("City", systemImage: "building.2.fill")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
+                .tag(Tab.cityChoice)
         }
     }
 }
@@ -30,4 +35,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+enum Tab {
+    case currentWeather, forecast, cityChoice
 }

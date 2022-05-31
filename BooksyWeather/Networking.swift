@@ -40,6 +40,15 @@ class Networking: ObservableObject {
             .map(\.data)
             .eraseToAnyPublisher()
     }
+
+    func geocodeLocation(payload: GeocodePayload) -> AnyPublisher<[GeocodingDto], Error> {
+        let url = ApiRoutes.geocodeLocation(payload: payload).url
+
+        return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
+            .map(\.data)
+            .decode(type: [GeocodingDto].self, decoder: decoder)
+            .eraseToAnyPublisher()
+    }
 }
 
 
@@ -75,10 +84,10 @@ struct Cloud: Codable {
 }
 
 struct Sys: Codable {
-    let type: Int
-    let id: Int
+    let type: Int?
+    let id: Int?
     let message: Double?
-    let country: String
+    let country: String?
     let sunrise: Double
     let sunset: Double
 }
@@ -99,6 +108,15 @@ struct CurrentWeatherDto: Codable {
     let cod: Int
 }
 
+struct GeocodingDto: Codable, Identifiable {
+    var id: String { "\(lat)#\(lon)"}
+    
+    let name: String
+    let lat: Double
+    let lon: Double
+    let country: String
+    let state: String?
+}
 /*
  {
  "coord": {

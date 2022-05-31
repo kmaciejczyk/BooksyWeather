@@ -19,7 +19,8 @@ class CurrentWeatherViewModel: ObservableObject {
     init() {}
 
     func getCurrentWeather() {
-        let location = Location(lat: 50.8660773, lon: 20.6285677)
+        let location = Location(lat: UserDefaultsConfig.lat,
+                                lon: UserDefaultsConfig.lon)
 
         networking.getCurrentWeather(location: location)
             .receive(on: DispatchQueue.main)

@@ -52,6 +52,12 @@ struct CurrentWeatherView: View {
         return .gray
     }
 
+    @Binding var tab: Tab
+    
+    init(tab: Binding<Tab>) {
+        _tab = tab
+    }
+
     var body: some View {
         ZStack {
             color.opacity(0.1).ignoresSafeArea()
@@ -71,7 +77,7 @@ struct CurrentWeatherView: View {
                         .animation(.interpolatingSpring(stiffness: 120, damping: 15).speed(0.2), value: offset)
                         .mask(Circle())
                         .background(Circle().fill(color.opacity(0.5)))
-                        .padding(20)
+                        .padding(10)
                 }
                 if let weather = viewModel.currentWeather {
                     Text("\(formattedValue(weather.main.temp)) ˚C")
@@ -82,7 +88,7 @@ struct CurrentWeatherView: View {
                         .padding(.bottom, 10)
                     Text(weather.name)
                         .font(.largeTitle)
-                        .padding(.bottom)
+                        .padding(.bottom, 10)
                     HStack(alignment: .top) {
 
                         VStack(spacing: 4) {
@@ -222,6 +228,6 @@ struct CurrentWeatherView: View {
 
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentWeatherView()
+        CurrentWeatherView(tab: .constant(.currentWeather))
     }
 }
