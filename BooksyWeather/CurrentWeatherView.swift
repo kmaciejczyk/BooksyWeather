@@ -71,27 +71,30 @@ struct CurrentWeatherView: View {
                         .animation(.interpolatingSpring(stiffness: 120, damping: 15).speed(0.2), value: offset)
                         .mask(Circle())
                         .background(Circle().fill(color.opacity(0.5)))
-                        .padding(30)
+                        .padding(20)
                 }
                 if let weather = viewModel.currentWeather {
+                    Text("\(formattedValue(weather.main.temp)) ˚C")
+                        .font(Font.system(size: 50))
+
+                    Text(weather.weather.first?.main ?? "")
+                        .font(.title)
+                        .padding(.bottom, 10)
                     Text(weather.name)
                         .font(.largeTitle)
-                    Text(weather.weather.first?.main ?? "")
-                        .font(.title3)
-                    Text("\(formattedValue(weather.main.temp)) ˚C")
-                        .font(.largeTitle)
-                        .bold()
                         .padding(.bottom)
                     HStack(alignment: .top) {
 
                         VStack(spacing: 4) {
+                            VStack {
                             HStack {
                                 Image(systemName: "thermometer")
                                 Text("Feels like")
                             }
-                            .font(.subheadline)
                             Text("\(formattedValue(weather.main.feelsLike)) ˚C")
                                 .bold()
+                            }
+                            .font(weather.main.tempMin == weather.main.temp && weather.main.tempMax == weather.main.temp ? .title : .subheadline)
                             if weather.main.tempMin != weather.main.temp {
                                 HStack {
                                     Image(systemName: "thermometer")
@@ -114,7 +117,10 @@ struct CurrentWeatherView: View {
                         .frame(maxWidth: .infinity)
 
                         VStack(spacing: 4) {
-                            Text("Wind speed").font(.subheadline)
+                            HStack {
+                                Image(systemName: "wind")
+                                Text("Wind speed")
+                            }.font(.subheadline)
 
                             Text("\(twoDigitFormatter.string(from: NSNumber(value: weather.wind.speed)) ?? "--") m/s")
                                 .bold()
@@ -127,6 +133,7 @@ struct CurrentWeatherView: View {
                                 .padding()
                                 .background(Image(systemName: "circle.dotted").resizable().scaledToFit())
                                 .frame(width: 60, height: 60)
+                                .padding(.bottom, 2)
                                 .onReceive(viewModel.$currentWeather) { cw in
                                     degrees = cw?.wind.deg ?? 0
                                 }
@@ -137,6 +144,16 @@ struct CurrentWeatherView: View {
                                         degrees = degrees + 6
                                     }
                                 }
+                            if let gust = weather.wind.gust {
+                                HStack {
+                                    Image(systemName: "wind")
+                                    Text("Wind gust")
+                                }
+                                .font(.subheadline)
+
+                                Text("\(twoDigitFormatter.string(from: NSNumber(value: gust)) ?? "--") m/s")
+                                    .bold()
+                            }
                         }
                         .frame(maxWidth: .infinity)
                     }
