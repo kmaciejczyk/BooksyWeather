@@ -66,7 +66,7 @@ struct MainData: Codable {
 
 struct Wind: Codable {
     let speed: Double
-    let deg: Int
+    let deg: Double
 }
 
 struct Cloud: Codable {
@@ -78,8 +78,8 @@ struct Sys: Codable {
     let id: Int
     let message: Double?
     let country: String
-    let sunrise: Int
-    let sunset: Int
+    let sunrise: Double
+    let sunset: Double
 }
 
 struct CurrentWeatherDto: Codable {
