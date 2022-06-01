@@ -38,13 +38,6 @@ struct ForecastView: View {
                                 ForEach(viewModel.forecastDict[key] ?? []) { item in
                                     HStack {
                                         leftColumn(item)
-                                            .onAppear {
-                                                if let icon = item.weather.first?.icon { viewModel.getIcon(icon)
-                                                    
-                                                }
-                                            }
-
-
 
                                         VStack(alignment: .leading, spacing: 10) {
                                             HStack {
@@ -103,15 +96,25 @@ struct ForecastView: View {
         VStack {
             Text(FormatterFactory.dateTimeFormatter.string(from: Date(timeIntervalSince1970: item.dt)))
                 .bold()
-            if let icon = viewModel.cache[item.weather.first?.icon ?? ""] {
-                icon.resizable()
-                    .scaledToFit()
-            }
+
+            Spacer()
             Text(item.weather.first?.main ?? "")
                 .font(.subheadline)
         }
+        .background(
+            Group {
+                if let icon = viewModel.cache[item.weather.first?.icon ?? ""] {
+                    icon.resizable()
+                        .scaledToFit()
+                }
+            })
         .frame(width: 90)
         .padding(.trailing, 20)
+        .onAppear {
+            if let icon = item.weather.first?.icon {
+                viewModel.getIcon(icon)
+            }
+        }
     }
 }
 
