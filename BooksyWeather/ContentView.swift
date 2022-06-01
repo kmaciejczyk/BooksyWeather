@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selectedTab = Tab.currentWeather
-    @State var exportedColor = Color.orange
-
+    @State private var selectedTab = Tab.forecast
+    @State private var exportedColor = Color.orange
+    @State private var showWelcomeView = false
     var body: some View {
         TabView(selection: $selectedTab) {
             CurrentWeatherView(tab: $selectedTab, exportedColor: $exportedColor)
@@ -28,6 +28,10 @@ struct ContentView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(Tab.cityChoice)
+        }
+        .fullScreenCover(isPresented: $showWelcomeView) {
+            WelcomeView()
+//                .ignoresSafeArea()
         }
     }
 }

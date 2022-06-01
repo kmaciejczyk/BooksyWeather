@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ForecastView: View {
+    @StateObject var viewModel = ForecastViewModel()
+
     @Binding var tab: Tab
     @Binding var exportedColor: Color
 
@@ -17,7 +19,99 @@ struct ForecastView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            if let forecast = viewModel.forecast {
+                VStack {
+
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(Array(viewModel.forecastDict.keys), id: \.self) { key in
+                                HStack {
+                                    Text(forecast.city.name)
+
+                                    Spacer()
+                                Text(key)
+                                }
+                                .padding(.horizontal)
+
+                                .font(.title2)
+                                ForEach(viewModel.forecastDict[key] ?? []) { item in
+                                    HStack {
+                                        leftColumn(item)
+                                            .onAppear {
+                                                if let icon = item.weather.first?.icon { viewModel.getIcon(icon)
+                                                    
+                                                }
+                                            }
+
+
+
+                                        VStack(alignment: .leading, spacing: 10) {
+                                            HStack {
+                                                Image(systemName: "thermometer")
+                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.tempMin)) ?? "--") ˚C")
+                                                    .font(.subheadline)
+                                                Spacer()
+
+                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.temp)) ?? "--") ˚C")
+                                                    .bold()
+                                                Spacer()
+
+                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.tempMax)) ?? "--") ˚C")
+                                                    .font(.subheadline)
+                                            }
+                                            HStack {
+                                                Image(systemName: "gauge")
+                                                Text("\(item.main.pressure) hPa")
+                                                Spacer()
+                                                Image(systemName: "humidity.fill")
+                                                Text("\(item.main.humidity) %")
+                                            }
+                                            HStack {
+                                                Image(systemName: "wind")
+                                                Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: item.wind.speed)) ?? "--") m/s")
+                                                if let gust = item.wind.gust, gust != item.wind.speed {
+                                                    Spacer()
+
+                                                    Image(systemName: "tornado")
+                                                    Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: gust)) ?? "--") m/s")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(exportedColor.opacity(0.5)))
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 4)
+                                }
+                            }
+                        }
+                    }
+                }
+                .navigationTitle("5 day forecast")
+                .background(exportedColor.opacity(0.2).ignoresSafeArea())
+            }
+        }
+
+        .onAppear {
+            viewModel.getForecast()
+        }
+    }
+
+    func leftColumn(_ item: ForecastWeatherDto) -> some View {
+        VStack {
+            Text(FormatterFactory.dateTimeFormatter.string(from: Date(timeIntervalSince1970: item.dt)))
+                .bold()
+            if let icon = viewModel.cache[item.weather.first?.icon ?? ""] {
+                icon.resizable()
+                    .scaledToFit()
+            }
+            Text(item.weather.first?.main ?? "")
+                .font(.subheadline)
+        }
+        .frame(width: 90)
+        .padding(.trailing, 20)
     }
 }
 

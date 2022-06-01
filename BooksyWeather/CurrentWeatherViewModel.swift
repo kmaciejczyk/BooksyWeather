@@ -42,7 +42,9 @@ class CurrentWeatherViewModel: ObservableObject {
         networking.getIcon(iconCode)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
-
+                if case .failure(let error) = completion {
+                    print("something went wrong: \(error)")
+                }
             }, receiveValue: { value in
                 if let uiImage = UIImage(data: value) {
                     self.icon = Image(uiImage: uiImage)

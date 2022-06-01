@@ -7,35 +7,46 @@
 
 import SwiftUI
 
-struct CurrentWeatherView: View {
-    @StateObject var viewModel = CurrentWeatherViewModel()
-
-    @State var degrees: Double = 0
-    @State var offset: Double = 0
-
-    private var formatter: NumberFormatter = {
+enum FormatterFactory {
+    static var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         return formatter
     }()
 
-    private var twoDigitFormatter: NumberFormatter = {
+    static var twoDigitFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         return formatter
     }()
 
-    private var dateTimeFormatter: DateFormatter = {
+    static var dateTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter
     }()
 
+    static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter
+    }()
+}
+
+struct CurrentWeatherView: View {
+    @StateObject var viewModel = CurrentWeatherViewModel()
+
+    @State var degrees: Double = 0
+    @State var offset: Double = 0
+
+
+
     func formattedValue(_ value: Double) -> String {
-        formatter.string(from: NSNumber(value: value)) ?? "--"
+        FormatterFactory.formatter.string(from: NSNumber(value: value)) ?? "--"
     }
 
     let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
@@ -131,7 +142,7 @@ struct CurrentWeatherView: View {
                                 Text("Wind speed")
                             }.font(.subheadline)
 
-                            Text("\(twoDigitFormatter.string(from: NSNumber(value: weather.wind.speed)) ?? "--") m/s")
+                            Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: weather.wind.speed)) ?? "--") m/s")
                                 .bold()
                                 .padding(.bottom, 2)
                             Image(systemName: "line.diagonal.arrow")
@@ -160,7 +171,7 @@ struct CurrentWeatherView: View {
                                 }
                                 .font(.subheadline)
 
-                                Text("\(twoDigitFormatter.string(from: NSNumber(value: gust)) ?? "--") m/s")
+                                Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: gust)) ?? "--") m/s")
                                     .bold()
                             }
                         }
@@ -199,7 +210,7 @@ struct CurrentWeatherView: View {
                             .font(.subheadline)
 
 
-                            Text(dateTimeFormatter.string(from: Date(timeIntervalSince1970: weather.sys.sunrise)))
+                            Text(FormatterFactory.dateTimeFormatter.string(from: Date(timeIntervalSince1970: weather.sys.sunrise)))
                                 .bold()
                                 .padding(.bottom, 2)
                             HStack {
@@ -209,7 +220,7 @@ struct CurrentWeatherView: View {
                                 Text("Sunset")
                             }
                             .font(.subheadline)
-                            Text(dateTimeFormatter.string(from: Date(timeIntervalSince1970: weather.sys.sunset)))
+                            Text(FormatterFactory.dateTimeFormatter.string(from: Date(timeIntervalSince1970: weather.sys.sunset)))
                                 .bold()
 
                         }

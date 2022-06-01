@@ -10,7 +10,7 @@ import Foundation
 enum ApiRoutes {
     case currentLocationWeather(lat: Double, lon: Double)
     case geocodeLocation(payload: GeocodePayload)
-    case forecastWeather
+    case forecastWeather(location: Location)
     case icon(iconCode: String)
 //    case //airpolution
 //    case //solarradiation
@@ -36,8 +36,13 @@ enum ApiRoutes {
                 + query
                 + "&limit=10"
                 + "&appid=\(AppConfig.apiKey)"
-        case .forecastWeather:
-            return ""
+        case let .forecastWeather(location):
+            return AppConfig.apiUrl
+                + "data/2.5/forecast?"
+                + "lat=\(location.lat)&lon=\(location.lon)"
+                + "&units=\(AppConfig.units)"
+                + "&lang=\(AppConfig.language)"
+                + "&appid=\(AppConfig.apiKey)"
         case let .icon(iconCode):
             return AppConfig.iconUrl + iconCode + "@2x.png"
         }

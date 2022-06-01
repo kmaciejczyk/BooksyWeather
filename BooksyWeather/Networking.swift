@@ -33,6 +33,23 @@ class Networking: ObservableObject {
 //        }
     }
 
+    func getForecast(location: Location) -> AnyPublisher<ForecastDto, Error> {
+        //        Future<CurrentWeatherDto, Never> { promise in
+        let url = ApiRoutes.forecastWeather(location: location).url
+
+        return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
+            .handleEvents(receiveOutput: { output in
+                print(String(data: output.data, encoding: .utf8))
+            }, receiveCancel: {
+                print("Cancelled")
+            })
+
+            .map(\.data)
+            .decode(type: ForecastDto.self, decoder: decoder)
+            .eraseToAnyPublisher()
+        //        }
+    }
+
     func getIcon(_ iconCode: String) -> AnyPublisher<Data, URLError> {
         let url = ApiRoutes.icon(iconCode: iconCode).url
 
@@ -100,7 +117,7 @@ struct CurrentWeatherDto: Codable {
     let visibility: Int
     let wind: Wind
     let clouds: Cloud
-    let dt: Int
+    let dt: Double
     let sys: Sys
     let timezone: Int
     let id: Int
@@ -117,49 +134,31 @@ struct GeocodingDto: Codable, Identifiable {
     let country: String
     let state: String?
 }
-/*
- {
- "coord": {
- "lon": -122.08,
- "lat": 37.39
- },
- "weather": [
- {
- "id": 800,
- "main": "Clear",
- "description": "clear sky",
- "icon": "01d"
- }
- ],
- "base": "stations",
- "main": {
- "temp": 282.55,
- "feels_like": 281.86,
- "temp_min": 280.37,
- "temp_max": 284.26,
- "pressure": 1023,
- "humidity": 100
- },
- "visibility": 10000,
- "wind": {
- "speed": 1.5,
- "deg": 350
- },
- "clouds": {
- "all": 1
- },
- "dt": 1560350645,
- "sys": {
- "type": 1,
- "id": 5122,
- "message": 0.0139,
- "country": "US",
- "sunrise": 1560343627,
- "sunset": 1560396563
- },
- "timezone": -25200,
- "id": 420006353,
- "name": "Mountain View",
- "cod": 200
- }
- */
+
+struct ForecastWeatherDto: Codable, Identifiable {
+    var id: Double { dt }
+    
+    let weather: [Weather]
+    let main: MainData
+    let visibility: Int
+    let wind: Wind
+    let clouds: Cloud
+    let dt: Double
+}
+
+struct City: Codable {
+    let id: Int
+    let name: String
+    let coord: Location
+    let country: String
+    let population: Int
+    let timezone: Int
+    let sunset: Double
+    let sunrise: Double
+}
+
+struct ForecastDto: Codable {
+    let cnt: Int
+    let list: [ForecastWeatherDto]
+    let city: City
+}
