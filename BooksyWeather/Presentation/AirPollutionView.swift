@@ -1,5 +1,5 @@
 //
-//  AirPolutionView.swift
+//  AirPollutionView.swift
 //  BooksyWeather
 //
 //  Created by Paweł Madej on 02/06/2022.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct AirPolutionView: View {
-    @StateObject var viewModel = AirPolutionViewModel()
+struct AirPollutionView: View {
+    @StateObject var viewModel = AirPollutionViewModel()
 
     @Binding var tab: Tab
     @Binding var exportedColor: Color
@@ -40,14 +40,14 @@ struct AirPolutionView: View {
                     }
                 }
             }
-            .navigationTitle("Air Polution")
+            .navigationTitle("Air Pollution")
         }
         .onAppear {
             viewModel.getAirPolution()
         }
     }
 
-    func aqi(airPolution: AirPolutionData) -> some View {
+    func aqi(airPolution: AirPollutionData) -> some View {
         VStack {
             Group {
                 switch airPolution.main.aqi {
@@ -87,7 +87,7 @@ struct AirPolutionView: View {
         }
     }
 
-    func gridElements(airPolution: AirPolutionData) -> some View {
+    func gridElements(airPolution: AirPollutionData) -> some View {
         Group {
             particleDensity(title: "AQI", particleValue: airPolution.main.aqi, showUnit: false)
             particleDensity(title: "CO", particleValue: airPolution.components.co)
@@ -118,6 +118,6 @@ struct AirPolutionView: View {
 
 struct AirPolutionView_Previews: PreviewProvider {
     static var previews: some View {
-        AirPolutionView(tab: .constant(.airPolution), exportedColor: .constant(.orange))
+        AirPollutionView(tab: .constant(.airPolution), exportedColor: .constant(.orange))
     }
 }

@@ -53,12 +53,12 @@ class Networking: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    func getAirPolution(location: Location) -> AnyPublisher<AirPolution, Error> {
+    func getAirPolution(location: Location) -> AnyPublisher<AirPollution, Error> {
         let url = ApiRoutes.airpolution(location: location).url
 
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .map(\.data)
-            .decode(type: AirPolution.self, decoder: decoder)
+            .decode(type: AirPollution.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
 }

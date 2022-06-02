@@ -1,5 +1,5 @@
 //
-//  AirPolutionViewModel.swift
+//  AirPollutionViewModel.swift
 //  BooksyWeather
 //
 //  Created by Paweł Madej on 02/06/2022.
@@ -8,8 +8,8 @@
 import Combine
 import Foundation
 
-class AirPolutionViewModel: ObservableObject {
-    @Published var airPolution: AirPolutionData?
+class AirPollutionViewModel: ObservableObject {
+    @Published var airPolution: AirPollutionData?
     
     private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()

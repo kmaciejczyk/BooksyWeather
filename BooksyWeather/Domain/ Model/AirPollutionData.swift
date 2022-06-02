@@ -1,5 +1,5 @@
 //
-//  AirPolutionData.swift
+//  AirPollutionData.swift
 //  BooksyWeather
 //
 //  Created by Paweł Madej on 02/06/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AirPolutionData: Codable {
+struct AirPollutionData: Codable {
     struct Main: Codable {
         let aqi: Double
     }
