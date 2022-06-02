@@ -18,6 +18,11 @@ struct ContentView: View {
                     Label("Current", systemImage: "sun.max.fill")
                 }
                 .tag(Tab.currentWeather)
+            AirPolutionView(tab: $selectedTab, exportedColor: $exportedColor)
+                .tabItem {
+                    Label("Air Polution", systemImage: "aqi.low")
+                }
+                .tag(Tab.currentWeather)
             ForecastView(tab: $selectedTab, exportedColor: $exportedColor)
                 .tabItem {
                     Label("Forecast", systemImage: "calendar")
@@ -43,5 +48,5 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 enum Tab {
-    case currentWeather, forecast, cityChoice
+    case currentWeather, forecast, cityChoice, airPolution
 }

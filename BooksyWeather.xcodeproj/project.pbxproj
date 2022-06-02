@@ -21,6 +21,8 @@
 		191E7CB228466393003F65B9 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E7CB128466393003F65B9 /* ForecastView.swift */; };
 		191E7CB4284663EA003F65B9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E7CB3284663EA003F65B9 /* SearchView.swift */; };
 		19853BB1284909D300D0DEC3 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 19853BB0284909D300D0DEC3 /* SwiftDate */; };
+		19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BB62849146100D0DEC3 /* AirPolutionView.swift */; };
+		19853BB92849149800D0DEC3 /* AirPolutionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */; };
 		199043812847B9D0005689C2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199043802847B9D0005689C2 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		191E7CAF28466389003F65B9 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		191E7CB128466393003F65B9 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		191E7CB3284663EA003F65B9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		19853BB62849146100D0DEC3 /* AirPolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionView.swift; sourceTree = "<group>"; };
+		19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionViewModel.swift; sourceTree = "<group>"; };
 		199043802847B9D0005689C2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +88,9 @@
 				191E7CA928466359003F65B9 /* CurrentWeatherViewModel.swift */,
 				191E7CB128466393003F65B9 /* ForecastView.swift */,
 				191E7CAB28466367003F65B9 /* ForecastViewModel.swift */,
+				19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */,
 				191E7CA728466344003F65B9 /* Networking.swift */,
+				19853BB62849146100D0DEC3 /* AirPolutionView.swift */,
 				199043802847B9D0005689C2 /* WelcomeView.swift */,
 				191E7C9B284661EA003F65B9 /* Preview Content */,
 			);
@@ -185,8 +191,10 @@
 				199043812847B9D0005689C2 /* WelcomeView.swift in Sources */,
 				191E7CA628466328003F65B9 /* ApiRoutes.swift in Sources */,
 				191E7CB4284663EA003F65B9 /* SearchView.swift in Sources */,
+				19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */,
 				191E7C96284661E9003F65B9 /* BooksyWeatherApp.swift in Sources */,
 				191E7CAA28466359003F65B9 /* CurrentWeatherViewModel.swift in Sources */,
+				19853BB92849149800D0DEC3 /* AirPolutionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

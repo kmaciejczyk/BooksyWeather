@@ -12,42 +12,28 @@ class Networking: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var decoder = JSONDecoder()
 
-    init() {
+    static var shared = Networking()
+
+    private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
     func getCurrentWeather(location: Location) -> AnyPublisher<CurrentWeatherDto, Error> {
-//        Future<CurrentWeatherDto, Never> { promise in
-            let url = ApiRoutes.currentLocationWeather(lat: location.lat, lon: location.lon).url
+        let url = ApiRoutes.currentLocationWeather(lat: location.lat, lon: location.lon).url
 
-            return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
-                .handleEvents(receiveOutput: { output in
-                    print(String(data: output.data, encoding: .utf8))
-                }, receiveCancel: {
-                    print("Cancelled")
-                })
-
-                .map(\.data)
-                .decode(type: CurrentWeatherDto.self, decoder: decoder)
-                .eraseToAnyPublisher()
-//        }
+        return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
+            .map(\.data)
+            .decode(type: CurrentWeatherDto.self, decoder: decoder)
+            .eraseToAnyPublisher()
     }
 
     func getForecast(location: Location) -> AnyPublisher<ForecastDto, Error> {
-        //        Future<CurrentWeatherDto, Never> { promise in
         let url = ApiRoutes.forecastWeather(location: location).url
 
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
-            .handleEvents(receiveOutput: { output in
-                print(String(data: output.data, encoding: .utf8))
-            }, receiveCancel: {
-                print("Cancelled")
-            })
-
             .map(\.data)
             .decode(type: ForecastDto.self, decoder: decoder)
             .eraseToAnyPublisher()
-        //        }
     }
 
     func getIcon(_ iconCode: String) -> AnyPublisher<Data, URLError> {
@@ -66,8 +52,33 @@ class Networking: ObservableObject {
             .decode(type: [GeocodingDto].self, decoder: decoder)
             .eraseToAnyPublisher()
     }
+
+    func getAirPolution(location: Location) -> AnyPublisher<AirPolutionDto, Error> {
+        let url = ApiRoutes.airpolution(location: location).url
+
+        return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
+            .map(\.data)
+            .decode(type: AirPolutionDto.self, decoder: decoder)
+            .eraseToAnyPublisher()
+    }
 }
 
+struct AirPolutionDto: Codable {
+    let coord: Location
+    let list: [AirPolution]
+}
+
+struct AirPolution: Codable {
+    struct Main: Codable {
+        let aqi: Double
+    }
+    struct Component: Codable {
+        let co, no, no2, o3, so2, pm25, pm10, nh3: Double
+    }
+    let dt: Double
+    let main: Main
+    let components: Component
+}
 
 struct Location: Codable {
     let lat: Double
