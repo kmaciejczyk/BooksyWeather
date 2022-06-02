@@ -29,7 +29,7 @@ struct MainNavigationView: View {
                 .tabItem {
                     Label("Air Polution", systemImage: "aqi.medium")
                 }
-                .tag(Tab.currentWeather)
+                .tag(Tab.airPolution)
 
             ForecastView(tab: $selectedTab, exportedColor: $exportedColor)
                 .tabItem {
