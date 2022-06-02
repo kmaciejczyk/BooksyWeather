@@ -29,46 +29,34 @@ struct ForecastView: View {
                             ForEach(Array(viewModel.forecastDict.keys).sorted(), id: \.self) { key in
                                 HStack {
                                     Text(forecast.city.name)
-
                                     Spacer()
-                                Text(key)
+                                    Text(key)
                                 }
                                 .padding(.horizontal)
-
                                 .font(.title2)
+
                                 ForEach(viewModel.forecastDict[key] ?? []) { item in
                                     HStack {
                                         leftColumn(item)
 
                                         VStack(alignment: .leading, spacing: 10) {
-                                            HStack {
-                                                Image(systemName: "thermometer")
-                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.tempMin)) ?? "--") ˚C")
-                                                    .font(.subheadline)
-                                                Spacer()
+                                            temperatureRow(item)
 
-                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.temp)) ?? "--") ˚C")
-                                                    .bold()
-                                                Spacer()
-
-                                                Text("\(FormatterFactory.formatter.string(from: NSNumber(value: item.main.tempMax)) ?? "--") ˚C")
-                                                    .font(.subheadline)
-                                            }
                                             HStack {
                                                 Image(systemName: "gauge")
-                                                Text("\(item.main.pressure) hPa")
+                                                Text(formatMeasurement(value: item.main.pressure, unit: UnitPressure.hectopascals))
                                                 Spacer()
                                                 Image(systemName: "humidity.fill")
-                                                Text("\(item.main.humidity) %")
+                                                Text(FormatterFactory.percentFormatter.string(from: NSNumber(value: item.main.humidity/100)) ?? "")
                                             }
                                             HStack {
                                                 Image(systemName: "wind")
-                                                Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: item.wind.speed)) ?? "--") m/s")
+                                                Text(formatMeasurement(value: item.wind.speed, unit: UnitSpeed.metersPerSecond))
                                                 if let gust = item.wind.gust, gust != item.wind.speed {
                                                     Spacer()
 
                                                     Image(systemName: "tornado")
-                                                    Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: gust)) ?? "--") m/s")
+                                                    Text(formatMeasurement(value: gust, unit: UnitSpeed.metersPerSecond))
                                                 }
                                             }
                                         }
@@ -107,6 +95,7 @@ struct ForecastView: View {
                 if let icon = viewModel.iconCache[item.weather.first?.icon ?? ""] {
                     icon.resizable()
                         .scaledToFit()
+                        .frame(width: 70)
                 }
             })
         .frame(width: 90)
@@ -118,6 +107,25 @@ struct ForecastView: View {
         }
     }
 
+    func formatMeasurement(value: Double, unit: Dimension) -> String {
+        FormatterFactory.measurmentFormatter.string(from: Measurement(value: value, unit: unit))
+    }
+
+    func temperatureRow(_ item: Forecast.ForecastWeather) -> some View {
+        HStack {
+            Image(systemName: "thermometer")
+            Text(formatMeasurement(value: item.main.tempMin, unit: UnitTemperature.celsius))
+                .font(.subheadline)
+            Spacer()
+
+            Text(formatMeasurement(value: item.main.temp, unit: UnitTemperature.celsius))
+                .bold()
+            Spacer()
+
+            Text(formatMeasurement(value: item.main.tempMax, unit: UnitTemperature.celsius))
+                .font(.subheadline)
+        }
+    }
     func bgColor(for item: Forecast.ForecastWeather) -> Color {
         if let sunrise = viewModel.forecast?.city.sunrise,
            let sunset = viewModel.forecast?.city.sunset {

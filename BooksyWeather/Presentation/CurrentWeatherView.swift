@@ -218,10 +218,6 @@ struct CurrentWeatherView: View {
         }
         .frame(maxWidth: .infinity)
     }
-
-    func formattedValue(_ value: Double) -> String {
-        FormatterFactory.formatter.string(from: NSNumber(value: value)) ?? "--"
-    }
 }
 
 struct CurrentWeatherView_Previews: PreviewProvider {
