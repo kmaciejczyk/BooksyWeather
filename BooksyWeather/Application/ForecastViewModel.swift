@@ -11,9 +11,9 @@ import SwiftUI
 
 class ForecastViewModel: ObservableObject {
     @Published var forecast: ForecastDto?
-    @Published var forecastDict: [String: [ForecastWeatherDto]] = [:]
+    @Published var forecastDict: [String: [ForecastDto.ForecastWeatherDto]] = [:]
 
-    private let networking = Networking()
+    private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()
     @Published var cache = [String: Image]()
 
@@ -36,7 +36,7 @@ class ForecastViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func groupByDate(list: [ForecastWeatherDto]) {
+    func groupByDate(list: [ForecastDto.ForecastWeatherDto]) {
         forecastDict = Dictionary(grouping: list) { key in
             FormatterFactory.dateFormatter.string(from: Date(timeIntervalSince1970: key.dt))
         }

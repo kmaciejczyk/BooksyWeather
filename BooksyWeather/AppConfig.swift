@@ -12,5 +12,5 @@ enum AppConfig {
     static let apiUrl = "https://api.openweathermap.org/"
     static let iconUrl = "https://openweathermap.org/img/wn/"
     static let units = "metric"
-    static let language = "en" // "pl"
+    static let language = "en"
 }

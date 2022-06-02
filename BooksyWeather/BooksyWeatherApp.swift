@@ -11,7 +11,7 @@ import SwiftUI
 struct BooksyWeatherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainNavigationView()
         }
     }
 }

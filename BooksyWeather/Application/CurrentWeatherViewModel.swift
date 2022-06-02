@@ -13,7 +13,7 @@ class CurrentWeatherViewModel: ObservableObject {
     @Published var currentWeather: CurrentWeatherDto?
     @Published var icon: Image?
 
-    private let networking = Networking()
+    private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()
 
     init() {}

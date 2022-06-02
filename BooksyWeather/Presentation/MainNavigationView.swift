@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainNavigationView.swift
 //  BooksyWeather
 //
 //  Created by Paweł Madej on 31/05/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainNavigationView: View {
     @State private var selectedTab = Tab.forecast
     @State private var exportedColor = Color.orange
     @State private var showWelcomeView = false
@@ -43,7 +43,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainNavigationView()
     }
 }
 

@@ -12,7 +12,7 @@ class SearchViewModel: ObservableObject {
     @Published var results = [GeocodingDto]()
     @Published var inProgress = false
 
-    private let networking = Networking()
+    private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()
 
     func geocodeCity(city: String, state: String, country: String) {
