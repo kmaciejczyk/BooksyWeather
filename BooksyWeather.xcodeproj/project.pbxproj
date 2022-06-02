@@ -39,6 +39,9 @@
 		19853BDA28492CE200D0DEC3 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BD928492CE200D0DEC3 /* UserDefaultsConfig.swift */; };
 		19853BDC284931F400D0DEC3 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BDB284931F400D0DEC3 /* Tab.swift */; };
 		19853BDF2849334000D0DEC3 /* FormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BDE2849334000D0DEC3 /* FormatterFactory.swift */; };
+		19853BE328495E6800D0DEC3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BE228495E6800D0DEC3 /* View.swift */; };
+		19853BE528495E8B00D0DEC3 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BE428495E8B00D0DEC3 /* EdgeBorder.swift */; };
+		19853BE728495EB200D0DEC3 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BE628495EB200D0DEC3 /* LabeledTextField.swift */; };
 		199043812847B9D0005689C2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199043802847B9D0005689C2 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,9 @@
 		19853BD928492CE200D0DEC3 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
 		19853BDB284931F400D0DEC3 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		19853BDE2849334000D0DEC3 /* FormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterFactory.swift; sourceTree = "<group>"; };
+		19853BE228495E6800D0DEC3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		19853BE428495E8B00D0DEC3 /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
+		19853BE628495EB200D0DEC3 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		199043802847B9D0005689C2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +170,8 @@
 		19853BBD284928C400D0DEC3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				19853BE128495E5500D0DEC3 /* Extensions */,
+				19853BE028495E4A00D0DEC3 /* UIComponents */,
 				19853BB62849146100D0DEC3 /* AirPolutionView.swift */,
 				191E7CAF28466389003F65B9 /* CurrentWeatherView.swift */,
 				191E7CB128466393003F65B9 /* ForecastView.swift */,
@@ -199,6 +207,23 @@
 				19853BC8284929C300D0DEC3 /* Wind.swift */,
 			);
 			path = " Model";
+			sourceTree = "<group>";
+		};
+		19853BE028495E4A00D0DEC3 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				19853BE428495E8B00D0DEC3 /* EdgeBorder.swift */,
+				19853BE628495EB200D0DEC3 /* LabeledTextField.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		19853BE128495E5500D0DEC3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19853BE228495E6800D0DEC3 /* View.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,9 +329,12 @@
 				19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */,
 				191E7C96284661E9003F65B9 /* BooksyWeatherApp.swift in Sources */,
 				19853BD828492CB500D0DEC3 /* UserDefault.swift in Sources */,
+				19853BE328495E6800D0DEC3 /* View.swift in Sources */,
 				191E7CAA28466359003F65B9 /* CurrentWeatherViewModel.swift in Sources */,
 				19853BD628492C9F00D0DEC3 /* PreferenceKey.swift in Sources */,
+				19853BE528495E8B00D0DEC3 /* EdgeBorder.swift in Sources */,
 				19853BB92849149800D0DEC3 /* AirPolutionViewModel.swift in Sources */,
+				19853BE728495EB200D0DEC3 /* LabeledTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

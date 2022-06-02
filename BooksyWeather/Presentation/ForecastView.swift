@@ -23,7 +23,6 @@ struct ForecastView: View {
         NavigationView {
             if let forecast = viewModel.forecast {
                 VStack {
-
                     ScrollView {
                         LazyVStack {
                             ForEach(Array(viewModel.forecastDict.keys).sorted(), id: \.self) { key in
@@ -75,7 +74,6 @@ struct ForecastView: View {
                 .background(exportedColor.opacity(0.2).ignoresSafeArea())
             }
         }
-
         .onAppear {
             viewModel.getForecast()
         }
@@ -126,6 +124,7 @@ struct ForecastView: View {
                 .font(.subheadline)
         }
     }
+
     func bgColor(for item: Forecast.ForecastWeather) -> Color {
         if let sunrise = viewModel.forecast?.city.sunrise,
            let sunset = viewModel.forecast?.city.sunset {
