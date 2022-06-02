@@ -47,7 +47,7 @@ struct AirPolutionView: View {
         }
     }
 
-    func aqi(airPolution: AirPolution) -> some View {
+    func aqi(airPolution: AirPolutionData) -> some View {
         VStack {
             Group {
                 switch airPolution.main.aqi {
@@ -87,7 +87,7 @@ struct AirPolutionView: View {
         }
     }
 
-    func gridElements(airPolution: AirPolution) -> some View {
+    func gridElements(airPolution: AirPolutionData) -> some View {
         Group {
             particleDensity(title: "AQI", particleValue: airPolution.main.aqi)
             particleDensity(title: "CO", particleValue: airPolution.components.co)

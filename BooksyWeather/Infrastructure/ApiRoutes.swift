@@ -14,7 +14,6 @@ enum ApiRoutes {
     case icon(iconCode: String)
     case airpolution(location: Location)
 
-
     var url: String {
         switch self {
         case let .currentLocationWeather(lat, lon):
@@ -23,6 +22,7 @@ enum ApiRoutes {
                 + "&appid=\(AppConfig.apiKey)"
                 + "&units=\(AppConfig.units)"
                 + "&lang=\(AppConfig.language)"
+
         case let .geocodeLocation(payload):
             var query = payload.city
             if !payload.state.isEmpty {
@@ -36,6 +36,7 @@ enum ApiRoutes {
                 + query
                 + "&limit=10"
                 + "&appid=\(AppConfig.apiKey)"
+
         case let .forecastWeather(location):
             return AppConfig.apiUrl
                 + "data/2.5/forecast?"
@@ -43,11 +44,13 @@ enum ApiRoutes {
                 + "&units=\(AppConfig.units)"
                 + "&lang=\(AppConfig.language)"
                 + "&appid=\(AppConfig.apiKey)"
+
         case let .airpolution(location):
             return AppConfig.apiUrl
                 + "data/2.5/air_pollution?"
                 + "lat=\(location.lat)&lon=\(location.lon)"
                 + "&appid=\(AppConfig.apiKey)"
+            
         case let .icon(iconCode):
             return AppConfig.iconUrl + iconCode + "@2x.png"
         }

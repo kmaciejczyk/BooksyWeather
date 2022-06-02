@@ -23,16 +23,16 @@
 		19853BB1284909D300D0DEC3 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 19853BB0284909D300D0DEC3 /* SwiftDate */; };
 		19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BB62849146100D0DEC3 /* AirPolutionView.swift */; };
 		19853BB92849149800D0DEC3 /* AirPolutionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */; };
-		19853BBF2849294B00D0DEC3 /* AirPolutionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BBE2849294B00D0DEC3 /* AirPolutionDto.swift */; };
-		19853BC12849296700D0DEC3 /* AirPolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC02849296700D0DEC3 /* AirPolution.swift */; };
+		19853BBF2849294B00D0DEC3 /* AirPolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BBE2849294B00D0DEC3 /* AirPolution.swift */; };
+		19853BC12849296700D0DEC3 /* AirPolutionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC02849296700D0DEC3 /* AirPolutionData.swift */; };
 		19853BC32849298900D0DEC3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC22849298900D0DEC3 /* Location.swift */; };
 		19853BC5284929A300D0DEC3 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC4284929A300D0DEC3 /* Weather.swift */; };
 		19853BC7284929B600D0DEC3 /* MainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC6284929B600D0DEC3 /* MainData.swift */; };
 		19853BC9284929C300D0DEC3 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BC8284929C300D0DEC3 /* Wind.swift */; };
 		19853BCB284929CC00D0DEC3 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BCA284929CC00D0DEC3 /* Cloud.swift */; };
-		19853BCD284929F100D0DEC3 /* CurrentWeatherDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BCC284929F100D0DEC3 /* CurrentWeatherDto.swift */; };
+		19853BCD284929F100D0DEC3 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BCC284929F100D0DEC3 /* CurrentWeather.swift */; };
 		19853BCF284929FE00D0DEC3 /* GeoCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BCE284929FE00D0DEC3 /* GeoCoding.swift */; };
-		19853BD128492A0F00D0DEC3 /* ForecastDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BD028492A0F00D0DEC3 /* ForecastDto.swift */; };
+		19853BD128492A0F00D0DEC3 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BD028492A0F00D0DEC3 /* Forecast.swift */; };
 		199043812847B9D0005689C2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199043802847B9D0005689C2 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,16 +53,16 @@
 		191E7CB3284663EA003F65B9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		19853BB62849146100D0DEC3 /* AirPolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionView.swift; sourceTree = "<group>"; };
 		19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionViewModel.swift; sourceTree = "<group>"; };
-		19853BBE2849294B00D0DEC3 /* AirPolutionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionDto.swift; sourceTree = "<group>"; };
-		19853BC02849296700D0DEC3 /* AirPolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolution.swift; sourceTree = "<group>"; };
+		19853BBE2849294B00D0DEC3 /* AirPolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolution.swift; sourceTree = "<group>"; };
+		19853BC02849296700D0DEC3 /* AirPolutionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPolutionData.swift; sourceTree = "<group>"; };
 		19853BC22849298900D0DEC3 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		19853BC4284929A300D0DEC3 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		19853BC6284929B600D0DEC3 /* MainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainData.swift; sourceTree = "<group>"; };
 		19853BC8284929C300D0DEC3 /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		19853BCA284929CC00D0DEC3 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
-		19853BCC284929F100D0DEC3 /* CurrentWeatherDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDto.swift; sourceTree = "<group>"; };
+		19853BCC284929F100D0DEC3 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		19853BCE284929FE00D0DEC3 /* GeoCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoding.swift; sourceTree = "<group>"; };
-		19853BD028492A0F00D0DEC3 /* ForecastDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDto.swift; sourceTree = "<group>"; };
+		19853BD028492A0F00D0DEC3 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		199043802847B9D0005689C2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,13 +97,13 @@
 		191E7C94284661E9003F65B9 /* BooksyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				19853BBD284928C400D0DEC3 /* Presentation */,
-				19853BBC284928BD00D0DEC3 /* Domain */,
-				19853BBB284928B300D0DEC3 /* Infrastructure */,
-				19853BBA284928A900D0DEC3 /* Application */,
 				191E7CA3284662FF003F65B9 /* AppConfig.swift */,
+				19853BBA284928A900D0DEC3 /* Application */,
 				191E7C99284661EA003F65B9 /* Assets.xcassets */,
 				191E7C95284661E9003F65B9 /* BooksyWeatherApp.swift */,
+				19853BBC284928BD00D0DEC3 /* Domain */,
+				19853BBB284928B300D0DEC3 /* Infrastructure */,
+				19853BBD284928C400D0DEC3 /* Presentation */,
 				191E7C9B284661EA003F65B9 /* Preview Content */,
 			);
 			path = BooksyWeather;
@@ -120,10 +120,10 @@
 		19853BBA284928A900D0DEC3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				191E7CAD28466372003F65B9 /* SearchViewModel.swift */,
+				19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */,
 				191E7CA928466359003F65B9 /* CurrentWeatherViewModel.swift */,
 				191E7CAB28466367003F65B9 /* ForecastViewModel.swift */,
-				19853BB82849149800D0DEC3 /* AirPolutionViewModel.swift */,
+				191E7CAD28466372003F65B9 /* SearchViewModel.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -140,16 +140,16 @@
 		19853BBC284928BD00D0DEC3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				19853BBE2849294B00D0DEC3 /* AirPolutionDto.swift */,
-				19853BC02849296700D0DEC3 /* AirPolution.swift */,
+				19853BBE2849294B00D0DEC3 /* AirPolution.swift */,
+				19853BC02849296700D0DEC3 /* AirPolutionData.swift */,
+				19853BCA284929CC00D0DEC3 /* Cloud.swift */,
+				19853BCC284929F100D0DEC3 /* CurrentWeather.swift */,
+				19853BD028492A0F00D0DEC3 /* Forecast.swift */,
+				19853BCE284929FE00D0DEC3 /* GeoCoding.swift */,
+				19853BC22849298900D0DEC3 /* Location.swift */,
+				19853BC6284929B600D0DEC3 /* MainData.swift */,
 				19853BC4284929A300D0DEC3 /* Weather.swift */,
 				19853BC8284929C300D0DEC3 /* Wind.swift */,
-				19853BCA284929CC00D0DEC3 /* Cloud.swift */,
-				19853BCC284929F100D0DEC3 /* CurrentWeatherDto.swift */,
-				19853BCE284929FE00D0DEC3 /* GeoCoding.swift */,
-				19853BD028492A0F00D0DEC3 /* ForecastDto.swift */,
-				19853BC6284929B600D0DEC3 /* MainData.swift */,
-				19853BC22849298900D0DEC3 /* Location.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 			files = (
 				191E7CA4284662FF003F65B9 /* AppConfig.swift in Sources */,
 				191E7CB228466393003F65B9 /* ForecastView.swift in Sources */,
-				19853BC12849296700D0DEC3 /* AirPolution.swift in Sources */,
+				19853BC12849296700D0DEC3 /* AirPolutionData.swift in Sources */,
 				19853BC7284929B600D0DEC3 /* MainData.swift in Sources */,
 				19853BCB284929CC00D0DEC3 /* Cloud.swift in Sources */,
 				191E7CA828466344003F65B9 /* Networking.swift in Sources */,
@@ -257,12 +257,12 @@
 				191E7CAE28466372003F65B9 /* SearchViewModel.swift in Sources */,
 				19853BC9284929C300D0DEC3 /* Wind.swift in Sources */,
 				199043812847B9D0005689C2 /* WelcomeView.swift in Sources */,
-				19853BD128492A0F00D0DEC3 /* ForecastDto.swift in Sources */,
+				19853BD128492A0F00D0DEC3 /* Forecast.swift in Sources */,
 				191E7CA628466328003F65B9 /* ApiRoutes.swift in Sources */,
 				191E7CB4284663EA003F65B9 /* SearchView.swift in Sources */,
-				19853BCD284929F100D0DEC3 /* CurrentWeatherDto.swift in Sources */,
+				19853BCD284929F100D0DEC3 /* CurrentWeather.swift in Sources */,
 				19853BCF284929FE00D0DEC3 /* GeoCoding.swift in Sources */,
-				19853BBF2849294B00D0DEC3 /* AirPolutionDto.swift in Sources */,
+				19853BBF2849294B00D0DEC3 /* AirPolution.swift in Sources */,
 				19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */,
 				191E7C96284661E9003F65B9 /* BooksyWeatherApp.swift in Sources */,
 				191E7CAA28466359003F65B9 /* CurrentWeatherViewModel.swift in Sources */,

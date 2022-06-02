@@ -10,8 +10,8 @@ import Combine
 import SwiftUI
 
 class ForecastViewModel: ObservableObject {
-    @Published var forecast: ForecastDto?
-    @Published var forecastDict: [String: [ForecastDto.ForecastWeatherDto]] = [:]
+    @Published var forecast: Forecast?
+    @Published var forecastDict: [String: [Forecast.ForecastWeather]] = [:]
 
     private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()
@@ -36,7 +36,7 @@ class ForecastViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func groupByDate(list: [ForecastDto.ForecastWeatherDto]) {
+    func groupByDate(list: [Forecast.ForecastWeather]) {
         forecastDict = Dictionary(grouping: list) { key in
             FormatterFactory.dateFormatter.string(from: Date(timeIntervalSince1970: key.dt))
         }

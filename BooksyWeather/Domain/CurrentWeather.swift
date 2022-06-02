@@ -1,5 +1,5 @@
 //
-//  CurrentWeatherDto.swift
+//  CurrentWeather.swift
 //  BooksyWeather
 //
 //  Created by Paweł Madej on 02/06/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrentWeatherDto: Codable {
+struct CurrentWeather: Codable {
     struct Sys: Codable {
         let type: Int?
         let id: Int?

@@ -93,7 +93,7 @@ struct ForecastView: View {
         }
     }
 
-    func leftColumn(_ item: ForecastDto.ForecastWeatherDto) -> some View {
+    func leftColumn(_ item: Forecast.ForecastWeather) -> some View {
         VStack {
             Text(FormatterFactory.dateTimeFormatter.string(from: Date(timeIntervalSince1970: item.dt)))
                 .bold()
@@ -118,7 +118,7 @@ struct ForecastView: View {
         }
     }
 
-    func bgColor(for item: ForecastDto.ForecastWeatherDto) -> Color {
+    func bgColor(for item: Forecast.ForecastWeather) -> Color {
         if let sunrise = viewModel.forecast?.city.sunrise,
            let sunset = viewModel.forecast?.city.sunset {
             if Date(timeIntervalSince1970: item.dt).hour >= Date(timeIntervalSince1970: sunrise).hour,

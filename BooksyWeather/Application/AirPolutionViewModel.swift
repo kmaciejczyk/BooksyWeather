@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class AirPolutionViewModel: ObservableObject {
-    @Published var airPolution: AirPolution?
+    @Published var airPolution: AirPolutionData?
     
     private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()

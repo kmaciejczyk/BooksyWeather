@@ -18,21 +18,21 @@ class Networking: ObservableObject {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
-    func getCurrentWeather(location: Location) -> AnyPublisher<CurrentWeatherDto, Error> {
+    func getCurrentWeather(location: Location) -> AnyPublisher<CurrentWeather, Error> {
         let url = ApiRoutes.currentLocationWeather(lat: location.lat, lon: location.lon).url
 
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .map(\.data)
-            .decode(type: CurrentWeatherDto.self, decoder: decoder)
+            .decode(type: CurrentWeather.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
 
-    func getForecast(location: Location) -> AnyPublisher<ForecastDto, Error> {
+    func getForecast(location: Location) -> AnyPublisher<Forecast, Error> {
         let url = ApiRoutes.forecastWeather(location: location).url
 
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .map(\.data)
-            .decode(type: ForecastDto.self, decoder: decoder)
+            .decode(type: Forecast.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
 
@@ -53,12 +53,12 @@ class Networking: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    func getAirPolution(location: Location) -> AnyPublisher<AirPolutionDto, Error> {
+    func getAirPolution(location: Location) -> AnyPublisher<AirPolution, Error> {
         let url = ApiRoutes.airpolution(location: location).url
 
         return URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .map(\.data)
-            .decode(type: AirPolutionDto.self, decoder: decoder)
+            .decode(type: AirPolution.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
 }

@@ -52,7 +52,9 @@ struct SearchView: View {
                             .frame(width: 100)
                     }
                     .tint(.red.opacity(0.8))
+
                     Spacer()
+
                     Button(action: {
                         viewModel.geocodeCity(city: city, state: state, country: country)
                     }) {

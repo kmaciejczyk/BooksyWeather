@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class CurrentWeatherViewModel: ObservableObject {
-    @Published var currentWeather: CurrentWeatherDto?
+    @Published var currentWeather: CurrentWeather?
     @Published var icon: Image?
 
     private let networking = Networking.shared
