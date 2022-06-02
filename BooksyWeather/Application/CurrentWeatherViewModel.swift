@@ -31,9 +31,6 @@ class CurrentWeatherViewModel: ObservableObject {
             }, receiveValue: { value in
                 self.currentWeather = value
                 self.getIcon(value.weather.first?.icon ?? "")
-                
-                print(value)
-                //                promise(.success(value))
             })
             .store(in: &cancellables)
     }

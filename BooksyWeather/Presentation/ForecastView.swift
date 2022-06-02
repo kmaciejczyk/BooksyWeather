@@ -104,7 +104,7 @@ struct ForecastView: View {
         }
         .background(
             Group {
-                if let icon = viewModel.cache[item.weather.first?.icon ?? ""] {
+                if let icon = viewModel.iconCache[item.weather.first?.icon ?? ""] {
                     icon.resizable()
                         .scaledToFit()
                 }

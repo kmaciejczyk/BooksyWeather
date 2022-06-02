@@ -12,10 +12,10 @@ import SwiftUI
 class ForecastViewModel: ObservableObject {
     @Published var forecast: Forecast?
     @Published var forecastDict: [String: [Forecast.ForecastWeather]] = [:]
+    @Published var iconCache = [String: Image]()
 
     private let networking = Networking.shared
     private var cancellables = Set<AnyCancellable>()
-    @Published var cache = [String: Image]()
 
     func getForecast() {
         let location = Location(lat: UserDefaultsConfig.lat,
@@ -30,8 +30,6 @@ class ForecastViewModel: ObservableObject {
             }, receiveValue: { value in
                 self.forecast = value
                 self.groupByDate(list: value.list)
-
-                //                print(value)
             })
             .store(in: &cancellables)
     }
@@ -43,7 +41,7 @@ class ForecastViewModel: ObservableObject {
     }
 
     func getIcon(_ iconCode: String) {
-        guard !cache.keys.contains(where: { $0 == iconCode }) else {
+        guard !iconCache.keys.contains(where: { $0 == iconCode }) else {
             return
         }
 
@@ -55,8 +53,7 @@ class ForecastViewModel: ObservableObject {
                 }
             }, receiveValue: { value in
                 if let uiImage = UIImage(data: value) {
-                    self.cache[iconCode] = Image(uiImage: uiImage)
-
+                    self.iconCache[iconCode] = Image(uiImage: uiImage)
                 }
             })
             .store(in: &cancellables)
