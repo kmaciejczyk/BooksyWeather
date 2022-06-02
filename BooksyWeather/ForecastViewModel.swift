@@ -39,7 +39,6 @@ class ForecastViewModel: ObservableObject {
     func groupByDate(list: [ForecastWeatherDto]) {
         forecastDict = Dictionary(grouping: list) { key in
             FormatterFactory.dateFormatter.string(from: Date(timeIntervalSince1970: key.dt))
-
         }
     }
 

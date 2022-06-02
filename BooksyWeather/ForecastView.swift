@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct ForecastView: View {
     @StateObject var viewModel = ForecastViewModel()
@@ -25,7 +26,7 @@ struct ForecastView: View {
 
                     ScrollView {
                         LazyVStack {
-                            ForEach(Array(viewModel.forecastDict.keys), id: \.self) { key in
+                            ForEach(Array(viewModel.forecastDict.keys).sorted(), id: \.self) { key in
                                 HStack {
                                     Text(forecast.city.name)
 
@@ -74,7 +75,7 @@ struct ForecastView: View {
                                     }
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(exportedColor.opacity(0.5)))
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(bgColor(for: item).opacity(0.5)))
                                     .padding(.horizontal)
                                     .padding(.vertical, 4)
                                 }
@@ -115,6 +116,20 @@ struct ForecastView: View {
                 viewModel.getIcon(icon)
             }
         }
+    }
+
+    func bgColor(for item: ForecastWeatherDto) -> Color {
+        if let sunrise = viewModel.forecast?.city.sunrise,
+           let sunset = viewModel.forecast?.city.sunset {
+            if Date(timeIntervalSince1970: item.dt).hour >= Date(timeIntervalSince1970: sunrise).hour,
+               Date(timeIntervalSince1970: item.dt).hour <= Date(timeIntervalSince1970: sunset).hour {
+                return Color.orange
+            } else {
+                return Color.blue
+            }
+        }
+
+        return Color.yellow
     }
 }
 

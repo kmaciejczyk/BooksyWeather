@@ -20,6 +20,7 @@
 		191E7CB028466389003F65B9 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E7CAF28466389003F65B9 /* CurrentWeatherView.swift */; };
 		191E7CB228466393003F65B9 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E7CB128466393003F65B9 /* ForecastView.swift */; };
 		191E7CB4284663EA003F65B9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E7CB3284663EA003F65B9 /* SearchView.swift */; };
+		19853BB1284909D300D0DEC3 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 19853BB0284909D300D0DEC3 /* SwiftDate */; };
 		199043812847B9D0005689C2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199043802847B9D0005689C2 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19853BB1284909D300D0DEC3 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +115,9 @@
 			dependencies = (
 			);
 			name = BooksyWeather;
+			packageProductDependencies = (
+				19853BB0284909D300D0DEC3 /* SwiftDate */,
+			);
 			productName = BooksyWeather;
 			productReference = 191E7C92284661E9003F65B9 /* BooksyWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -141,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 191E7C89284661E9003F65B9;
+			packageReferences = (
+				19853BAF284909D300D0DEC3 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+			);
 			productRefGroup = 191E7C93284661E9003F65B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -379,6 +387,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		19853BAF284909D300D0DEC3 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		19853BB0284909D300D0DEC3 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19853BAF284909D300D0DEC3 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 191E7C8A284661E9003F65B9 /* Project object */;
 }
