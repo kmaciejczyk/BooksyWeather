@@ -13,7 +13,6 @@ struct MainNavigationView: View {
     @State private var showWelcomeView: Bool
 
     init() {
-        print(UserDefaultsConfig.showWelcomeView)
         _showWelcomeView = State(initialValue: UserDefaultsConfig.showWelcomeView)
     }
 

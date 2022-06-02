@@ -70,7 +70,7 @@ struct AirPolutionView: View {
                     Image(systemName: "aqi.high")
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(.yellow)
+                        .foregroundColor(.orange)
                 case 5:
                     Image(systemName: "aqi.high")
                         .resizable()
@@ -89,7 +89,7 @@ struct AirPolutionView: View {
 
     func gridElements(airPolution: AirPolutionData) -> some View {
         Group {
-            particleDensity(title: "AQI", particleValue: airPolution.main.aqi)
+            particleDensity(title: "AQI", particleValue: airPolution.main.aqi, showUnit: false)
             particleDensity(title: "CO", particleValue: airPolution.components.co)
             particleDensity(title: "PM 2.5", particleValue: airPolution.components.pm25)
             particleDensity(title: "PM 10", particleValue: airPolution.components.pm10)
@@ -101,13 +101,13 @@ struct AirPolutionView: View {
         }
     }
 
-    func particleDensity(title: String, particleValue: Double) -> some View {
+    func particleDensity(title: String, particleValue: Double, showUnit: Bool = true) -> some View {
         VStack(spacing: 10) {
             Text(title)
                 .bold()
                 .font(.title2)
 
-            Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: particleValue)) ?? "--") μg/m3")
+            Text("\(FormatterFactory.twoDigitFormatter.string(from: NSNumber(value: particleValue)) ?? "--")\(showUnit ? " μg/m3" : "")")
         }
         .padding()
         .frame(maxWidth: .infinity)

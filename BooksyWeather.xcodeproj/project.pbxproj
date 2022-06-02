@@ -38,6 +38,7 @@
 		19853BD828492CB500D0DEC3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BD728492CB500D0DEC3 /* UserDefault.swift */; };
 		19853BDA28492CE200D0DEC3 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BD928492CE200D0DEC3 /* UserDefaultsConfig.swift */; };
 		19853BDC284931F400D0DEC3 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BDB284931F400D0DEC3 /* Tab.swift */; };
+		19853BDF2849334000D0DEC3 /* FormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19853BDE2849334000D0DEC3 /* FormatterFactory.swift */; };
 		199043812847B9D0005689C2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199043802847B9D0005689C2 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		19853BD728492CB500D0DEC3 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		19853BD928492CE200D0DEC3 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
 		19853BDB284931F400D0DEC3 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		19853BDE2849334000D0DEC3 /* FormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterFactory.swift; sourceTree = "<group>"; };
 		199043802847B9D0005689C2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				19853BDD2849320900D0DEC3 /*  Model */,
 				19853BD428492C8500D0DEC3 /* Storage */,
 				19853BDB284931F400D0DEC3 /* Tab.swift */,
+				19853BDE2849334000D0DEC3 /* FormatterFactory.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				19853BCF284929FE00D0DEC3 /* GeoCoding.swift in Sources */,
 				19853BDA28492CE200D0DEC3 /* UserDefaultsConfig.swift in Sources */,
 				19853BBF2849294B00D0DEC3 /* AirPolution.swift in Sources */,
+				19853BDF2849334000D0DEC3 /* FormatterFactory.swift in Sources */,
 				19853BB72849146100D0DEC3 /* AirPolutionView.swift in Sources */,
 				191E7C96284661E9003F65B9 /* BooksyWeatherApp.swift in Sources */,
 				19853BD828492CB500D0DEC3 /* UserDefault.swift in Sources */,

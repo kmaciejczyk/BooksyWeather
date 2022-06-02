@@ -21,7 +21,7 @@ struct CurrentWeather: Codable {
     let weather: [Weather]
     let base: String
     let main: MainData
-    let visibility: Int
+    let visibility: Double
     let wind: Wind
     let clouds: Cloud
     let dt: Double
